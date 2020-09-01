@@ -1,0 +1,39 @@
+<resources>
+    <!--Non Translatable Strings-->
+    <string name="app_name" translatable="false">Github User</string>
+    <string name="public_repos" translatable="false">Repositories</string>
+    <string name="reminder_key" translatable="false">Reminder</string>
+    <string name="reminder_time" translatable="false">09.00</string>
+
+    <!--Translatable Strings-->
+    <string name="followers">Followers</string>
+    <string name="following">Following</string>
+    <string name="search_hint">Input Github Username First..</string>
+    <string name="not_found">User Not Found</string>
+    <string name="not_have">%1$s Not Have %2$s</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="language">Language</string>
+    <string name="change_language">Change Language</string>
+    <string name="favorite">Favorite</string>
+    <string name="favorite_add">%s Add To Favorite</string>
+    <string name="favorite_remove">%s Remove From Favorite</string>
+    <string name="reminder">Daily Reminder</string>
+    <string name="reminder_on">Daily Reminder On</string>
+    <string name="reminder_off">Daily Reminder Off</string>
+    <string name="reminder_title">Github User Waiting For You</string>
+    <string name="reminder_message">Find Your Favorite User Now!</string>
+    <string name="widget_enabled">Github Widget Activated</string>
+    <string name="widget_disabled">Github Widget Deactivated</string>
+
+    <!--Example Strings -->
+    <string name="exp_login" translatable="false">Login</string>
+    <string name="exp_name" translatable="false">Name</string>
+    <string name="exp_location" translatable="false">Location</string>
+    <string name="exp_type" translatable="false">Type</string>
+    <string name="exp_publicRepos" translatable="false">0</string>
+    <string name="exp_followers" translatable="false">1</string>
+    <string name="exp_following" translatable="false">2</string>
+    <string name="appwidget_text" translatable="false">EXAMPLE</string>
+    <string name="add_widget" translatable="false">Add widget</string>
+</resources>

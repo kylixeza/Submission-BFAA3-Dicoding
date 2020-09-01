@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="android.view.View" />
+        <variable
+            name="data"
+            type="com.kylix.consumerapp.model.GithubUser" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="@{data.login}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="@string/exp_login" />
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/location" />
+
+        <ImageView
+            android:id="@+id/avatar"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="8dp"
+            android:contentDescription="@string/app_name"
+            android:padding="8dp"
+            android:transitionName="imageView_trans"
+            app:avatar='@{data.avatar_url ?? ""}'
+            app:layout_constraintStart_toStartOf="@id/detail_txt_publicRepos"
+            app:layout_constraintTop_toBottomOf="@id/separator"
+            app:layout_constraintEnd_toEndOf="@id/detail_txt_following"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+
+            android:textAlignment="center"
+            android:text="@{data.name??data.login}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Headline1"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="@id/login"
+            app:layout_constraintTop_toBottomOf="@id/login"
+            app:layout_constraintEnd_toEndOf="@id/login"
+            tools:text="@string/exp_name" />
+
+        <!--Public Repos Configurations-->
+        <TextView
+            android:id="@+id/detail_txt_publicRepos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="18dp"
+            android:text="@string/public_repos"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif-condensed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_publicRepos"
+            app:layout_constraintEnd_toStartOf="@id/detail_txt_followers"/>
+
+        <TextView
+            android:id="@+id/detail_publicRepos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:text="@{String.valueOf(data.public_repos)}"
+            tools:text="@string/exp_publicRepos"
+            app:layout_constraintTop_toBottomOf="@id/avatar"
+            app:layout_constraintStart_toStartOf="@id/detail_txt_publicRepos"
+            app:layout_constraintEnd_toEndOf="@id/detail_txt_publicRepos"/>
+        <!--Public Repos Configurations End-->
+
+        <!-- Followers Configurations-->
+        <TextView
+            android:id="@+id/detail_txt_followers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="18dp"
+            android:text="@string/followers"
+            android:textSize="14sp"
+            android:textColor="@android:color/black"
+            android:fontFamily="sans-serif-condensed"
+            app:layout_constraintStart_toEndOf="@id/detail_txt_publicRepos"
+            app:layout_constraintTop_toBottomOf="@id/detail_followers"
+            app:layout_constraintEnd_toStartOf="@id/detail_txt_following"/>
+
+        <TextView
+            android:id="@+id/detail_followers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textStyle="bold"
+            android:textSize="20sp"
+            android:fontFamily="sans-serif-condensed"
+            android:text="@{String.valueOf(data.followers)}"
+            tools:text="@string/exp_followers"
+            app:layout_constraintTop_toTopOf="@id/detail_publicRepos"
+            app:layout_constraintStart_toStartOf="@id/detail_txt_followers"
+            app:layout_constraintEnd_toEndOf="@id/detail_txt_followers"/>
+        <!-- Followers Configurations End-->
+
+        <!-- Following Configurations-->
+        <TextView
+            android:id="@+id/detail_txt_following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/following"
+            android:textColor="@android:color/black"
+            android:textSize="14sp"
+            android:fontFamily="sans-serif-condensed"
+            app:layout_constraintStart_toEndOf="@id/detail_txt_followers"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/detail_following"/>
+
+        <TextView
+            android:id="@+id/detail_following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:text="@{String.valueOf(data.following)}"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="@id/detail_followers"
+            app:layout_constraintStart_toStartOf="@id/detail_txt_following"
+            app:layout_constraintEnd_toEndOf="@id/detail_txt_following"
+            tools:text="@string/exp_following"/>
+        <!-- Following Configurations End-->
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="8dp"
+            android:text="@{data.location}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="15sp"
+            android:textAlignment="viewEnd"
+            app:layout_constraintStart_toEndOf="@id/type"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            tools:text="@string/exp_location"
+            android:visibility="@{data.location!=null? View.VISIBLE : View.GONE}" />
+
+        <TextView
+            android:id="@+id/type"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:drawablePadding="8dp"
+            android:lines="1"
+            android:text="@{data.type}"
+            android:textAppearance="@style/TextAppearance.MaterialComponents.Caption"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name"
+            app:layout_constraintEnd_toStartOf="@id/location"
+            tools:text="@string/exp_type" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

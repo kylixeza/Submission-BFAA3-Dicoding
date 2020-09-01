@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="search_hint">Masukkan Nama Pengguna Github..</string>
+    <string name="not_found">Pegguna Tidak Ditemukan</string>
+    <string name="not_have">%1$s Tidak Memiliki %2$s</string>
+    <string name="home">Beranda</string>
+    <string name="settings">Pengaturan</string>
+    <string name="language">Bahasa</string>
+    <string name="change_language">Ubah Bahasa</string>
+    <string name="favorite">Favorit</string>
+    <string name="favorite_add">%s Ditambahkan ke Favorite</string>
+    <string name="favorite_remove">%s Dihapus dari Favorite</string>
+    <string name="reminder">Pengingat Harian</string>
+    <string name="reminder_on">Pengingat Harian Hidup</string>
+    <string name="reminder_off">Pengingat Harian Mati</string>
+    <string name="reminder_title">Github User Menunggumu</string>
+    <string name="reminder_message">Temukan Pengguna Favoritmu Sekarang!</string>
+    <string name="widget_enabled">Github Widget diaktifkan</string>
+    <string name="widget_disabled">Github Widget dimatikan</string>
+</resources>

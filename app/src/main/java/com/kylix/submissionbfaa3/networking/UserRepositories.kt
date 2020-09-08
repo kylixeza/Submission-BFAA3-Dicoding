@@ -12,8 +12,8 @@ object UserRepositories {
         try {
             val userSearch = RetrofitConfig.apiClient.searchUsers(query)
             emit(Resource.success(userSearch.items))
-        } catch (exception: Exception) {
-            emit(Resource.error(null, exception.message ?: "Error"))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.message ?: "Error Detected: ${e.localizedMessage}"))
         }
     }
 
@@ -21,8 +21,8 @@ object UserRepositories {
         emit(Resource.loading(null))
         try {
             emit(Resource.success(RetrofitConfig.apiClient.userFollower(username)))
-        } catch (exception: Exception) {
-            emit(Resource.error(null, exception.message ?: "Error"))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.message ?: "Error Detected: ${e.localizedMessage}"))
         }
     }
 
@@ -30,8 +30,8 @@ object UserRepositories {
         emit(Resource.loading(null))
         try {
             emit(Resource.success(RetrofitConfig.apiClient.userFollowing(username)))
-        } catch (exception: Exception) {
-            emit(Resource.error(null, exception.message ?: "Error"))
+        } catch (e: Exception) {
+            emit(Resource.error(null, e.message ?: "Error Detected: ${e.localizedMessage}"))
         }
     }
 

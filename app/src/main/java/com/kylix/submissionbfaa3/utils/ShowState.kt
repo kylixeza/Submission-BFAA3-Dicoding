@@ -15,22 +15,29 @@ class ShowState(private val stateId: Int,
                 private val followBinding: FollowFragmentBinding?,
                 private val favoriteBinding: FavoriteFragmentBinding?) {
 
+
     fun loading(){
         when(stateId){
             STATE_HOME -> {
-                homeBinding?.errLayout?.mainNotFound?.visibility = View.GONE
-                homeBinding?.progress?.visibility = View.VISIBLE
-                homeBinding?.recyclerHome?.visibility = View.GONE
+                homeBinding?.apply {
+                    errLayout.mainNotFound.visibility = gone()
+                    progress.visibility = visible()
+                    recyclerHome.visibility = gone()
+                }
             }
             STATE_FOLLOW -> {
-                followBinding?.errLayout?.mainNotFound?.visibility = View.GONE
-                followBinding?.progress?.visibility = View.VISIBLE
-                followBinding?.recylerFollow?.visibility = View.GONE
+                followBinding?.apply {
+                    errLayout.mainNotFound.visibility = gone()
+                    progress.visibility = visible()
+                    recylerFollow.visibility = gone()
+                }
             }
             STATE_FAVORITE -> {
-                favoriteBinding?.errlayout?.mainNotFound?.visibility = View.GONE
-                favoriteBinding?.progress?.visibility = View.VISIBLE
-                favoriteBinding?.recyclerFav?.visibility = View.GONE
+                favoriteBinding?.apply {
+                    errlayout.mainNotFound.visibility = gone()
+                    progress.visibility = visible()
+                    recyclerFav.visibility = gone()
+                }
             }
         }
     }
@@ -38,19 +45,25 @@ class ShowState(private val stateId: Int,
     fun success(){
         when(stateId){
             STATE_HOME -> {
-                homeBinding?.errLayout?.mainNotFound?.visibility = View.GONE
-                homeBinding?.progress?.visibility = View.GONE
-                homeBinding?.recyclerHome?.visibility = View.VISIBLE
+                homeBinding?.apply {
+                    errLayout.mainNotFound.visibility = gone()
+                    progress.visibility = gone()
+                    recyclerHome.visibility = visible()
+                }
             }
             STATE_FOLLOW -> {
-                followBinding?.errLayout?.mainNotFound?.visibility = View.GONE
-                followBinding?.progress?.visibility = View.GONE
-                followBinding?.recylerFollow?.visibility = View.VISIBLE
+                followBinding?.apply {
+                    errLayout.mainNotFound.visibility = gone()
+                    progress.visibility = gone()
+                    recylerFollow.visibility = visible()
+                }
             }
             STATE_FAVORITE -> {
-                favoriteBinding?.errlayout?.mainNotFound?.visibility = View.GONE
-                favoriteBinding?.progress?.visibility = View.GONE
-                favoriteBinding?.recyclerFav?.visibility = View.VISIBLE
+                favoriteBinding?.apply {
+                    errlayout.mainNotFound.visibility = gone()
+                    progress.visibility = gone()
+                    recyclerFav.visibility = visible()
+                }
             }
         }
     }
@@ -58,23 +71,38 @@ class ShowState(private val stateId: Int,
     fun error(message: String?, resources: Resources){
         when(stateId){
             STATE_HOME -> {
-                homeBinding?.errLayout?.mainNotFound?.visibility = View.VISIBLE
-                homeBinding?.errLayout?.emptyText?.text = message ?: resources.getString(R.string.not_found)
-                homeBinding?.progress?.visibility = View.GONE
-                homeBinding?.recyclerHome?.visibility = View.GONE
+                homeBinding?.apply {
+                    errLayout.apply {
+                        mainNotFound.visibility = visible()
+                        emptyText.text = message ?: resources.getString(R.string.not_found)
+                    }
+                    progress.visibility = gone()
+                    recyclerHome.visibility = gone()
+                }
             }
             STATE_FOLLOW -> {
-                followBinding?.errLayout?.mainNotFound?.visibility = View.VISIBLE
-                followBinding?.errLayout?.emptyText?.text = message ?: resources.getString(R.string.not_found)
-                followBinding?.progress?.visibility = View.GONE
-                followBinding?.recylerFollow?.visibility = View.GONE
+                followBinding?.apply {
+                    errLayout.apply {
+                        mainNotFound.visibility = visible()
+                        emptyText.text = message ?: resources.getString(R.string.not_found)
+                    }
+                    progress.visibility = gone()
+                    recylerFollow.visibility = gone()
+                }
             }
             STATE_FAVORITE -> {
-                favoriteBinding?.errlayout?.mainNotFound?.visibility = View.VISIBLE
-                favoriteBinding?.errlayout?.emptyText?.text = message?: resources.getString(R.string.not_found)
-                favoriteBinding?.progress?.visibility = View.GONE
-                favoriteBinding?.recyclerFav?.visibility = View.GONE
+                favoriteBinding?.apply {
+                    errlayout.apply {
+                        mainNotFound.visibility = visible()
+                        emptyText.text = message ?: resources.getString(R.string.not_found)
+                    }
+                    progress.visibility = gone()
+                    recyclerFav.visibility = gone()
+                }
             }
         }
     }
+
+    private fun visible() = View.VISIBLE
+    private fun gone() = View.GONE
 }

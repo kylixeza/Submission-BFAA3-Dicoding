@@ -1,16 +1,19 @@
 <resources>
-    <string name="app_name">Consumer Github User</string>
+    <!-- Non Translatable -->
+    <string name="app_name" translatable="false">Consumer Github User</string>
+    <string name="public_repos" translatable="false">Repositories</string>
+
+    <!-- Translatable-->
     <string name="not_found">User Not Found</string>
-    <string name="exp_login">Login</string>
-    <string name="exp_name">Name</string>
-    <string name="exp_location">Location</string>
-    <string name="exp_type">Type</string>
-    <string name="exp_publicRepos">0</string>
-    <string name="exp_followers">1</string>
-    <string name="exp_following">2</string>
-    <string name="public_repos">Repositories</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Example Strings-->
+    <string name="exp_login" translatable="false">Login</string>
+    <string name="exp_name" translatable="false">Name</string>
+    <string name="exp_location" translatable="false">Location</string>
+    <string name="exp_type" translatable="false">Type</string>
+    <string name="exp_publicRepos" translatable="false">0</string>
+    <string name="exp_followers" translatable="false">1</string>
+    <string name="exp_following" translatable="false">2</string>
 </resources>

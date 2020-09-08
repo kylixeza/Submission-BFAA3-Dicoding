@@ -3,7 +3,7 @@
     <string name="followers">Pengikut</string>
     <string name="following">Mengikuti</string>
     <string name="search_hint">Masukkan Nama Pengguna Github..</string>
-    <string name="not_found">Pegguna Tidak Ditemukan</string>
+    <string name="not_found">Pengguna Tidak Ditemukan</string>
     <string name="not_have">%1$s Tidak Memiliki %2$s</string>
     <string name="home">Beranda</string>
     <string name="settings">Pengaturan</string>

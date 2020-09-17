@@ -16,6 +16,7 @@ import com.kylix.submissionbfaa3.databinding.DetailFragmentBinding
 import com.kylix.submissionbfaa3.model.GithubUser
 import com.kylix.submissionbfaa3.utils.State
 import com.kylix.submissionbfaa3.viewmodels.DetailViewModel
+import com.shashank.sony.fancytoastlib.FancyToast
 
 class DetailFragment : Fragment() {
 
@@ -76,13 +77,13 @@ class DetailFragment : Fragment() {
     private fun addOrRemoveFavorite(){
         if (!isFavorite){
             detailViewModel.addFavorite(githubUser)
-            Toast.makeText(
-                context, resources.getString(R.string.favorite_add, githubUser.login), Toast.LENGTH_SHORT
+            FancyToast.makeText(
+                context, resources.getString(R.string.favorite_add, githubUser.login), Toast.LENGTH_SHORT, FancyToast.SUCCESS, false
             ).show()
         } else {
             detailViewModel.removeFavorite(githubUser)
-            Toast.makeText(
-                context, resources.getString(R.string.favorite_remove, githubUser.login), Toast.LENGTH_LONG
+            FancyToast.makeText(
+                context, resources.getString(R.string.favorite_remove, githubUser.login), Toast.LENGTH_SHORT, FancyToast.SUCCESS, false
             ).show()
         }
     }

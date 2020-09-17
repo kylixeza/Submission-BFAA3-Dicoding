@@ -12,7 +12,7 @@ object RetrofitConfig {
             .addInterceptor { chain ->
                 val original = chain.request()
                 val requestBuilder = original.newBuilder()
-                    .header("Authorization", GITHUB_API_KEY) // Replace GITHUB_API_KEY with your github api key
+                    .header("Authorization","055044b02ef50083d69daf0f7b96531f2928e047") // Replace GITHUB_API_KEY with your github api key
                 val request = requestBuilder.build()
                 chain.proceed(request)
             }

@@ -21,21 +21,24 @@ class ShowState(private val stateId: Int,
             STATE_HOME -> {
                 homeBinding?.apply {
                     errLayout.mainNotFound.visibility = gone()
-                    progress.visibility = visible()
+                    progress.start()
+                    progress.loadingColor = R.color.colorAccent
                     recyclerHome.visibility = gone()
                 }
             }
             STATE_FOLLOW -> {
                 followBinding?.apply {
                     errLayout.mainNotFound.visibility = gone()
-                    progress.visibility = visible()
+                    progress.start()
+                    progress.loadingColor = R.color.colorAccent
                     recylerFollow.visibility = gone()
                 }
             }
             STATE_FAVORITE -> {
                 favoriteBinding?.apply {
                     errlayout.mainNotFound.visibility = gone()
-                    progress.visibility = visible()
+                    progress.start()
+                    progress.loadingColor = R.color.colorAccent
                     recyclerFav.visibility = gone()
                 }
             }
@@ -47,21 +50,21 @@ class ShowState(private val stateId: Int,
             STATE_HOME -> {
                 homeBinding?.apply {
                     errLayout.mainNotFound.visibility = gone()
-                    progress.visibility = gone()
+                    progress.stop()
                     recyclerHome.visibility = visible()
                 }
             }
             STATE_FOLLOW -> {
                 followBinding?.apply {
                     errLayout.mainNotFound.visibility = gone()
-                    progress.visibility = gone()
+                    progress.stop()
                     recylerFollow.visibility = visible()
                 }
             }
             STATE_FAVORITE -> {
                 favoriteBinding?.apply {
                     errlayout.mainNotFound.visibility = gone()
-                    progress.visibility = gone()
+                    progress.stop()
                     recyclerFav.visibility = visible()
                 }
             }
@@ -76,7 +79,7 @@ class ShowState(private val stateId: Int,
                         mainNotFound.visibility = visible()
                         emptyText.text = message ?: resources.getString(R.string.not_found)
                     }
-                    progress.visibility = gone()
+                    progress.stop()
                     recyclerHome.visibility = gone()
                 }
             }
@@ -86,7 +89,7 @@ class ShowState(private val stateId: Int,
                         mainNotFound.visibility = visible()
                         emptyText.text = message ?: resources.getString(R.string.not_found)
                     }
-                    progress.visibility = gone()
+                    progress.stop()
                     recylerFollow.visibility = gone()
                 }
             }
@@ -96,7 +99,7 @@ class ShowState(private val stateId: Int,
                         mainNotFound.visibility = visible()
                         emptyText.text = message ?: resources.getString(R.string.not_found)
                     }
-                    progress.visibility = gone()
+                    progress.stop()
                     recyclerFav.visibility = gone()
                 }
             }

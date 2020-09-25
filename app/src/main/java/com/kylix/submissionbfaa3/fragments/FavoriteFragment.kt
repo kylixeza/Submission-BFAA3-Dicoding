@@ -14,13 +14,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.submissionbfaa3.R
 import com.kylix.submissionbfaa3.adapter.UserAdapter
 import com.kylix.submissionbfaa3.databinding.FavoriteFragmentBinding
-import com.kylix.submissionbfaa3.utils.ShowState
+import com.kylix.submissionbfaa3.utils.ShowStates
 import com.kylix.submissionbfaa3.viewmodels.FavoriteViewModel
 
-class FavoriteFragment : Fragment() {
-    companion object{
-        const val STATE_FAVORITE = 3
-    }
+class FavoriteFragment : Fragment(), ShowStates {
     private lateinit var favoriteBinding: FavoriteFragmentBinding
     private lateinit var favoriteAdapter: UserAdapter
     private val favoriteViewModel: FavoriteViewModel by navGraphViewModels(R.id.my_navigation)
@@ -53,21 +50,53 @@ class FavoriteFragment : Fragment() {
     }
 
     private fun observeFavorite() {
-        showState().loading()
+        favoriteLoading(favoriteBinding)
         favoriteViewModel.dataFavorite.observe(viewLifecycleOwner, Observer {
             it?.let { users ->
                 if (!users.isNullOrEmpty()){
-                    showState().success()
+                    favoriteSuccess(favoriteBinding)
                     favoriteAdapter.setData(users)
                 } else {
-                    showState().error(
-                        resources.getString(R.string.not_have,"",resources.getString(R.string.favorite)),
-                        resources)
+                    favoriteError(
+                        favoriteBinding,
+                        resources.getString(R.string.not_have, "", resources.getString(R.string.favorite))
+                    )
                 }
             }
         })
     }
 
-    private fun showState(): ShowState =
-        ShowState(STATE_FAVORITE, null, null, favoriteBinding)
+    override fun favoriteLoading(favoriteFragmentBinding: FavoriteFragmentBinding): Int? {
+        favoriteBinding.apply {
+            errlayout.mainNotFound.visibility = gone()
+            progress.start()
+            progress.loadingColor = R.color.colorAccent
+            recyclerFav.visibility = gone()
+        }
+        return super.favoriteLoading(favoriteFragmentBinding)
+    }
+
+    override fun favoriteSuccess(favoriteFragmentBinding: FavoriteFragmentBinding): Int? {
+        favoriteBinding.apply {
+            errlayout.mainNotFound.visibility = gone()
+            progress.stop()
+            recyclerFav.visibility = visible()
+        }
+        return super.favoriteSuccess(favoriteFragmentBinding)
+    }
+
+    override fun favoriteError(
+        favoriteFragmentBinding: FavoriteFragmentBinding,
+        message: String?
+    ): Int? {
+        favoriteBinding.apply {
+            errlayout.apply {
+                mainNotFound.visibility = visible()
+                emptyText.text = message ?: resources.getString(R.string.not_found)
+            }
+            progress.stop()
+            recyclerFav.visibility = gone()
+        }
+        return super.favoriteError(favoriteFragmentBinding, message)
+    }
 }

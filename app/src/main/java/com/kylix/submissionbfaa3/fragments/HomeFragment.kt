@@ -1,11 +1,11 @@
 package com.kylix.submissionbfaa3.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -14,15 +14,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.submissionbfaa3.R
 import com.kylix.submissionbfaa3.adapter.UserAdapter
 import com.kylix.submissionbfaa3.databinding.HomeFragmentBinding
-import com.kylix.submissionbfaa3.utils.ShowState
+import com.kylix.submissionbfaa3.utils.ShowStates
 import com.kylix.submissionbfaa3.utils.State
 import com.kylix.submissionbfaa3.viewmodels.HomeViewModel
 
-class HomeFragment : Fragment() {
-
-    companion object{
-        const val STATE_HOME = 1
-    }
+class HomeFragment : Fragment(), ShowStates {
 
     private lateinit var homeBinding: HomeFragmentBinding
     private lateinit var homeAdapter: UserAdapter
@@ -75,20 +71,48 @@ class HomeFragment : Fragment() {
                     State.SUCCESS -> {
                         resource.data?.let { users ->
                             if (!users.isNullOrEmpty()) {
-                                showState().success()
+                                homeSuccess(homeBinding)
                                 homeAdapter.setData(users)
                             } else {
-                                showState().error( null, resources)
+                                homeError(homeBinding, null)
                             }
                         }
                     }
-                    State.LOADING -> showState().loading()
-                    State.ERROR -> showState().error(it.message, resources)
-                }
+                    State.LOADING -> homeLoading(homeBinding)
+                    State.ERROR -> homeError(homeBinding, it.message)
+            }
             }
         })
     }
 
-    private fun showState(): ShowState =
-        ShowState(STATE_HOME, homeBinding, null, null)
+    override fun homeLoading(homeBinding: HomeFragmentBinding): Int? {
+        homeBinding.apply {
+            errLayout.mainNotFound.visibility = gone()
+            progress.start()
+            progress.loadingColor = R.color.colorAccent
+            recyclerHome.visibility = gone()
+        }
+        return super.homeLoading(homeBinding)
+    }
+
+    override fun homeSuccess(homeBinding: HomeFragmentBinding): Int? {
+        homeBinding.apply {
+            errLayout.mainNotFound.visibility = gone()
+            progress.stop()
+            recyclerHome.visibility = visible()
+        }
+        return super.homeSuccess(homeBinding)
+    }
+
+    override fun homeError(homeBinding: HomeFragmentBinding, message: String?): Int? {
+        homeBinding.apply {
+            errLayout.apply {
+                mainNotFound.visibility = visible()
+                emptyText.text = message ?: resources.getString(R.string.not_found)
+            }
+            progress.stop()
+            recyclerHome.visibility = gone()
+        }
+        return super.homeError(homeBinding, message)
+    }
 }

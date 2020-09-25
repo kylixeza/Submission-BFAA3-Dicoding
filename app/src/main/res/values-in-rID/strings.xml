@@ -19,4 +19,6 @@
     <string name="reminder_message">Temukan Pengguna Favoritmu Sekarang!</string>
     <string name="widget_enabled">Github Widget diaktifkan</string>
     <string name="widget_disabled">Github Widget dimatikan</string>
+    <string name="location_not_found">Lokasi Tidak Ditemukan :(</string>
+    <string name="created_by">Dibuat Oleh:</string>
 </resources>

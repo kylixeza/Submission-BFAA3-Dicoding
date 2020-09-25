@@ -7,6 +7,7 @@
     <string name="not_found">User Not Found</string>
     <string name="followers">Followers</string>
     <string name="following">Following</string>
+    <string name="language_settings">Language Settings</string>
 
     <!-- Example Strings-->
     <string name="exp_login" translatable="false">Login</string>

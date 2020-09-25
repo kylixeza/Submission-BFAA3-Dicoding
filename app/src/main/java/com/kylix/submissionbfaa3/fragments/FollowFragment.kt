@@ -12,12 +12,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.submissionbfaa3.R
 import com.kylix.submissionbfaa3.adapter.UserAdapter
 import com.kylix.submissionbfaa3.databinding.FollowFragmentBinding
-import com.kylix.submissionbfaa3.utils.ShowState
+import com.kylix.submissionbfaa3.utils.ShowStates
 import com.kylix.submissionbfaa3.utils.State
 import com.kylix.submissionbfaa3.utils.TypeView
 import com.kylix.submissionbfaa3.viewmodels.FollowViewModel
+import com.shashank.sony.fancytoastlib.FancyToast
 
-class FollowFragment : Fragment() {
+class FollowFragment : Fragment(), ShowStates {
 
     companion object {
         fun newInstance(username: String, type: String) =
@@ -27,7 +28,6 @@ class FollowFragment : Fragment() {
                     putString(TYPE, type)
                 }
             }
-        const val STATE_FOLLOW = 2
         private const val TYPE = "type"
         private const val USERNAME = "username"
     }
@@ -62,7 +62,7 @@ class FollowFragment : Fragment() {
         ).get(FollowViewModel::class.java)
 
         usersAdapter = UserAdapter(arrayListOf()) { user, _ ->
-            Toast.makeText(context, user, Toast.LENGTH_SHORT).show()
+            FancyToast.makeText(context, user, Toast.LENGTH_SHORT, FancyToast.INFO, false).show()
         }
 
         followBinding.recylerFollow.apply {
@@ -73,7 +73,7 @@ class FollowFragment : Fragment() {
         when (type) {
             resources.getString(R.string.following) -> followViewModel.setFollow(username, TypeView.FOLLOWING)
             resources.getString(R.string.followers) -> followViewModel.setFollow(username, TypeView.FOLLOWER)
-            else -> showState().error(null, resources)
+            else -> followError(followBinding, null)
         }
         observeFollow()
     }
@@ -83,19 +83,45 @@ class FollowFragment : Fragment() {
             when (it.state) {
                 State.SUCCESS ->
                     if (!it.data.isNullOrEmpty()) {
-                        showState().success()
+                        followSuccess(followBinding)
                         usersAdapter.run { setData(it.data) }
                     } else {
-                        showState().error(
-                            resources.getString(R.string.not_have, username, type)
-                            , resources)
+                        followError(followBinding, resources.getString(R.string.not_have, username, type))
                     }
-                State.LOADING -> showState().loading()
-                State.ERROR -> showState().error(it.message, resources)
+                State.LOADING -> followLoading(followBinding)
+                State.ERROR -> followError(followBinding, it.message)
             }
         })
     }
 
-    private fun showState(): ShowState =
-        ShowState(STATE_FOLLOW, null, followBinding, null)
+    override fun followLoading(followBinding: FollowFragmentBinding): Int? {
+        followBinding.apply {
+            errLayout.mainNotFound.visibility = gone()
+            progress.start()
+            progress.loadingColor = R.color.colorAccent
+            recylerFollow.visibility = gone()
+        }
+        return super.followLoading(followBinding)
+    }
+
+    override fun followSuccess(followBinding: FollowFragmentBinding): Int? {
+        followBinding.apply {
+            errLayout.mainNotFound.visibility = gone()
+            progress.stop()
+            recylerFollow.visibility = visible()
+        }
+        return super.followSuccess(followBinding)
+    }
+
+    override fun followError(followBinding: FollowFragmentBinding, message: String?): Int? {
+        followBinding.apply {
+            errLayout.apply {
+                mainNotFound.visibility = visible()
+                emptyText.text = message ?: resources.getString(R.string.not_found)
+            }
+            progress.stop()
+            recylerFollow.visibility = gone()
+            return super.followError(followBinding, message)
+        }
+    }
 }

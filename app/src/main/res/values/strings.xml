@@ -4,6 +4,7 @@
     <string name="public_repos" translatable="false">Repositories</string>
     <string name="reminder_key" translatable="false">Reminder</string>
     <string name="reminder_time" translatable="false">09.00</string>
+    <string name="my_name" translatable="false">Kylix Eza</string>
 
     <!--Translatable Strings-->
     <string name="followers">Followers</string>
@@ -25,6 +26,8 @@
     <string name="reminder_message">Find Your Favorite User Now!</string>
     <string name="widget_enabled">Github Widget Activated</string>
     <string name="widget_disabled">Github Widget Deactivated</string>
+    <string name="location_not_found">Location Not Found :(</string>
+    <string name="created_by">Created By:</string>
 
     <!--Example Strings -->
     <string name="exp_login" translatable="false">Login</string>

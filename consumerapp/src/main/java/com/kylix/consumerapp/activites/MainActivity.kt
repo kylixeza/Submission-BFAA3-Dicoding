@@ -1,13 +1,16 @@
 package com.kylix.consumerapp.activites
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.Menu
-import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kylix.consumerapp.R
 import com.kylix.consumerapp.adapter.UserAdapter
 import com.kylix.consumerapp.databinding.ActivityMainBinding
 import com.kylix.consumerapp.fragment.DetailFragment
@@ -17,6 +20,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var usersViewModel: UserViewModel
     private lateinit var mainBinding: ActivityMainBinding
     private lateinit var usersAdapter: UserAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
@@ -45,6 +49,19 @@ class MainActivity : AppCompatActivity() {
                 gone(true)
             }
         })
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.language_settings, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.language_settings){
+            val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+            startActivity(intent)
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     private fun visible(){

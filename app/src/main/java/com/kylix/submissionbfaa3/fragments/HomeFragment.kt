@@ -87,19 +87,19 @@ class HomeFragment : Fragment(), ShowStates {
 
     override fun homeLoading(homeBinding: HomeFragmentBinding): Int? {
         homeBinding.apply {
-            errLayout.mainNotFound.visibility = gone()
+            errLayout.mainNotFound.visibility = gone
             progress.start()
             progress.loadingColor = R.color.colorAccent
-            recyclerHome.visibility = gone()
+            recyclerHome.visibility = gone
         }
         return super.homeLoading(homeBinding)
     }
 
     override fun homeSuccess(homeBinding: HomeFragmentBinding): Int? {
         homeBinding.apply {
-            errLayout.mainNotFound.visibility = gone()
+            errLayout.mainNotFound.visibility = gone
             progress.stop()
-            recyclerHome.visibility = visible()
+            recyclerHome.visibility = visible
         }
         return super.homeSuccess(homeBinding)
     }
@@ -107,11 +107,11 @@ class HomeFragment : Fragment(), ShowStates {
     override fun homeError(homeBinding: HomeFragmentBinding, message: String?): Int? {
         homeBinding.apply {
             errLayout.apply {
-                mainNotFound.visibility = visible()
+                mainNotFound.visibility = visible
                 emptyText.text = message ?: resources.getString(R.string.not_found)
             }
             progress.stop()
-            recyclerHome.visibility = gone()
+            recyclerHome.visibility = gone
         }
         return super.homeError(homeBinding, message)
     }

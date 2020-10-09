@@ -19,6 +19,9 @@ interface ShowStates {
     fun favoriteSuccess(favoriteFragmentBinding: FavoriteFragmentBinding): Int? = null
     fun favoriteError(favoriteFragmentBinding: FavoriteFragmentBinding, message: String?): Int? = null
 
-    fun gone() = View.GONE
-    fun visible() = View.VISIBLE
+    val gone: Int
+        get() = View.GONE
+
+    val visible: Int
+        get() = View.VISIBLE
 }

@@ -6,11 +6,11 @@ import android.content.Context
 import android.content.Intent
 import android.media.RingtoneManager
 import android.os.Build
-import android.widget.Toast
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.kylix.submissionbfaa3.R
 import com.kylix.submissionbfaa3.activities.MainActivity
+import com.shashank.sony.fancytoastlib.FancyToast
 import java.util.*
 
 class ReminderUser: BroadcastReceiver() {
@@ -80,7 +80,7 @@ class ReminderUser: BroadcastReceiver() {
             intent
         )
 
-        Toast.makeText(context, context.getString(R.string.reminder_on), Toast.LENGTH_SHORT).show()
+        FancyToast.makeText(context, context.getString(R.string.reminder_on), FancyToast.LENGTH_SHORT, FancyToast.SUCCESS, false).show()
     }
 
     fun cancelAlarm(context: Context?){
@@ -91,6 +91,6 @@ class ReminderUser: BroadcastReceiver() {
 
         alarmManager.cancel(pendingIntent)
 
-        Toast.makeText(context, context.getString(R.string.reminder_off), Toast.LENGTH_SHORT).show()
+        FancyToast.makeText(context, context.getString(R.string.reminder_off), FancyToast.LENGTH_SHORT, FancyToast.ERROR, false).show()
     }
 }

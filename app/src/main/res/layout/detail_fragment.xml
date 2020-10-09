@@ -193,7 +193,7 @@
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:background="?selectableItemBackground"
-            app:srcCompat="@drawable/ic_favorite_border"
+            app:srcCompat="@drawable/ic_unfav"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

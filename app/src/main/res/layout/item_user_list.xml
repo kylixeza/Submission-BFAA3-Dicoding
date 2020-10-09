@@ -13,9 +13,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Theme.MaterialComponents.Light"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp">
 
@@ -53,7 +54,6 @@
                 app:layout_constraintTop_toTopOf="@id/list_avatarUrl"
                 app:layout_constraintBottom_toBottomOf="@id/list_avatarUrl"
                 tools:text="@string/exp_login" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </layout>

@@ -1,11 +1,11 @@
 package com.kylix.submissionbfaa3.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
@@ -68,19 +68,19 @@ class FavoriteFragment : Fragment(), ShowStates {
 
     override fun favoriteLoading(favoriteFragmentBinding: FavoriteFragmentBinding): Int? {
         favoriteBinding.apply {
-            errlayout.mainNotFound.visibility = gone()
+            errlayout.mainNotFound.visibility = gone
             progress.start()
             progress.loadingColor = R.color.colorAccent
-            recyclerFav.visibility = gone()
+            recyclerFav.visibility = gone
         }
         return super.favoriteLoading(favoriteFragmentBinding)
     }
 
     override fun favoriteSuccess(favoriteFragmentBinding: FavoriteFragmentBinding): Int? {
         favoriteBinding.apply {
-            errlayout.mainNotFound.visibility = gone()
+            errlayout.mainNotFound.visibility = gone
             progress.stop()
-            recyclerFav.visibility = visible()
+            recyclerFav.visibility = visible
         }
         return super.favoriteSuccess(favoriteFragmentBinding)
     }
@@ -91,11 +91,11 @@ class FavoriteFragment : Fragment(), ShowStates {
     ): Int? {
         favoriteBinding.apply {
             errlayout.apply {
-                mainNotFound.visibility = visible()
+                mainNotFound.visibility = visible
                 emptyText.text = message ?: resources.getString(R.string.not_found)
             }
             progress.stop()
-            recyclerFav.visibility = gone()
+            recyclerFav.visibility = gone
         }
         return super.favoriteError(favoriteFragmentBinding, message)
     }

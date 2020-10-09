@@ -1,11 +1,11 @@
 package com.kylix.submissionbfaa3.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -96,19 +96,19 @@ class FollowFragment : Fragment(), ShowStates {
 
     override fun followLoading(followBinding: FollowFragmentBinding): Int? {
         followBinding.apply {
-            errLayout.mainNotFound.visibility = gone()
+            errLayout.mainNotFound.visibility = gone
             progress.start()
             progress.loadingColor = R.color.colorAccent
-            recylerFollow.visibility = gone()
+            recylerFollow.visibility = gone
         }
         return super.followLoading(followBinding)
     }
 
     override fun followSuccess(followBinding: FollowFragmentBinding): Int? {
         followBinding.apply {
-            errLayout.mainNotFound.visibility = gone()
+            errLayout.mainNotFound.visibility = gone
             progress.stop()
-            recylerFollow.visibility = visible()
+            recylerFollow.visibility = visible
         }
         return super.followSuccess(followBinding)
     }
@@ -116,12 +116,12 @@ class FollowFragment : Fragment(), ShowStates {
     override fun followError(followBinding: FollowFragmentBinding, message: String?): Int? {
         followBinding.apply {
             errLayout.apply {
-                mainNotFound.visibility = visible()
+                mainNotFound.visibility = visible
                 emptyText.text = message ?: resources.getString(R.string.not_found)
             }
             progress.stop()
-            recylerFollow.visibility = gone()
-            return super.followError(followBinding, message)
+            recylerFollow.visibility = gone
         }
+        return super.followError(followBinding, message)
     }
 }

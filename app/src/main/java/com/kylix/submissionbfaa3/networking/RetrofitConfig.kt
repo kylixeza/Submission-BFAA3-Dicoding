@@ -12,7 +12,7 @@ object RetrofitConfig {
             .addInterceptor { chain ->
                 val original = chain.request()
                 val requestBuilder = original.newBuilder()
-                    .header("Authorization", GITUB_API_KEY) // Replace GITHUB_API_KEY with your github api key inside double quotes
+                    .header("Authorization", GITHUB_API_KEY) // Replace GITHUB_API_KEY with your github api key inside double quotes
                 val request = requestBuilder.build()
                 chain.proceed(request)
             }
@@ -25,7 +25,6 @@ object RetrofitConfig {
         Retrofit.Builder()
             .baseUrl("https://api.github.com")
             .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
     }
 

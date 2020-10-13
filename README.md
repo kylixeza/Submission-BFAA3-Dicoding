@@ -13,3 +13,5 @@ Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding
 <p>Rotate Loading: https://github.com/yankai-victor/Loading</p>
 <p>Fancy Toast: https://github.com/Shashank02051997/FancyToast-Android </p>
 
+<p>Help me to finish my collage :)</p>
+https://saweria.co/kylixeza

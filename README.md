@@ -10,8 +10,10 @@ Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding
 </ol>
 
 <p>Custom android UI: </p>
-<p>Rotate Loading: https://github.com/yankai-victor/Loading</p>
-<p>Fancy Toast: https://github.com/Shashank02051997/FancyToast-Android </p>
+<ol>
+  <li><p>Rotate Loading: https://github.com/yankai-victor/Loading</p></li>
+  <li><p>Fancy Toast: https://github.com/Shashank02051997/FancyToast-Android </p></li>
+</ol>
 
 <p>Help me to finish my college :)</p>
 https://saweria.co/kylixeza

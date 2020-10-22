@@ -1,5 +1,8 @@
 # Submission-BFAA3-Dicoding
 Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding 
+
+![guarantee](https://www.google.com/search?q=5+star+guarantee+png&tbm=isch&ved=2ahUKEwjylqqkisfsAhV25TgGHTHeAYYQ2-cCegQIABAA&oq=5+star+guarantee+png&gs_lcp=CgNpbWcQAzoECAAQHjoECAAQGFC2NVj4PmCwQGgAcAB4AIABfYgBwAOSAQMwLjSYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=oOSQX_JG9srj4Q-xvIewCA&bih=825&biw=1600&client=firefox-b-d&safe=strict#imgrc=WiOgXBqgp91GAM)
+
 <ul>
   <li>Android Studio Minimum Version: 4.0.0</li>
 </ul>

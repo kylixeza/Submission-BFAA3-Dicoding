@@ -17,7 +17,7 @@ Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding
 </ul>
 
 <p>Rating</p>
-<p>:stars: :stars: :stars: :stars: :stars:</p>
+<p>:star: :star: :star: :star: :star:</p>
 
 <p>Help me to finish my college :)</p>
 https://saweria.co/kylixeza

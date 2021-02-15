@@ -16,5 +16,8 @@ Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding
   <li><p>Fancy Toast: https://github.com/Shashank02051997/FancyToast-Android </p></li>
 </ul>
 
+<p>Rating</p>
+<p>:stars: :stars: :stars: :stars: :stars:</p>
+
 <p>Help me to finish my college :)</p>
 https://saweria.co/kylixeza

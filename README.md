@@ -1,5 +1,6 @@
 # Submission-BFAA3-Dicoding
 Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding 
+
 <ul>
   <li>Android Studio Minimum Version: 4.0.0</li>
 </ul>
@@ -10,6 +11,13 @@ Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding
 </ol>
 
 <p>Custom android UI: </p>
-<p>Rotate Loading: https://github.com/yankai-victor/Loading</p>
-<p>Fancy Toast: https://github.com/Shashank02051997/FancyToast-Android </p>
+<ul>
+  <li><p>Rotate Loading: https://github.com/yankai-victor/Loading</p></li>
+  <li><p>Fancy Toast: https://github.com/Shashank02051997/FancyToast-Android </p></li>
+</ul>
 
+<p>Rating</p>
+<p>:star: :star: :star: :star: :star:</p>
+
+<p>Help me to finish my college :)</p>
+https://saweria.co/kylixeza

@@ -9,7 +9,7 @@ import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import com.kylix.submissionbfaa3.R
-import com.kylix.submissionbfaa3.activities.MainActivity
+import com.kylix.submissionbfaa3.ui.activities.MainActivity
 import com.shashank.sony.fancytoastlib.FancyToast
 import java.util.*
 

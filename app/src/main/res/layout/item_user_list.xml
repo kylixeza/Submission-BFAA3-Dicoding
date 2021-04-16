@@ -13,10 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/Theme.MaterialComponents.Light"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+
         app:cardCornerRadius="8dp"
         app:cardElevation="6dp">
 
@@ -33,7 +30,7 @@
                 android:contentDescription="@string/app_name"
                 android:scaleType="centerCrop"
                 android:transitionName="imageView_trans"
-                app:avatar="@{data.avatar_url}"
+                app:avatar="@{data.avatarUrl}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -46,7 +43,7 @@
                 android:layout_marginStart="8dp"
                 android:maxLines="1"
                 android:text="@{data.login}"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
                 android:fontFamily="sans-serif-condensed"

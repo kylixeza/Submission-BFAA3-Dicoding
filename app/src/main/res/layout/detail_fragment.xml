@@ -33,7 +33,7 @@
                 android:layout_height="90dp"
                 android:contentDescription="@string/app_name"
                 android:layout_marginStart="8dp"
-                app:avatar='@{data.avatar_url ?? "" }'
+                app:avatar='@{data.avatarUrl ?? "" }'
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/detail_txt_publicRepos"
                 app:layout_constraintTop_toTopOf="parent"
@@ -100,7 +100,7 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/black"
                 android:textStyle="bold"
-                android:text="@{String.valueOf(data.public_repos)}"
+                android:text="@{String.valueOf(data.publicRepos)}"
                 tools:text="@string/exp_publicRepos"
                 app:layout_constraintTop_toTopOf="@id/detail_avatarUrl"
                 app:layout_constraintStart_toStartOf="@id/detail_txt_publicRepos"
@@ -195,6 +195,7 @@
             android:background="?selectableItemBackground"
             app:srcCompat="@drawable/ic_unfav"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="@string/favorite" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.fragments
+package com.kylix.submissionbfaa3.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,11 +12,13 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.submissionbfaa3.R
-import com.kylix.submissionbfaa3.adapter.UserAdapter
+import com.kylix.submissionbfaa3.ui.adapter.UserAdapter
 import com.kylix.submissionbfaa3.databinding.HomeFragmentBinding
 import com.kylix.submissionbfaa3.utils.ShowStates
 import com.kylix.submissionbfaa3.utils.State
 import com.kylix.submissionbfaa3.viewmodels.HomeViewModel
+import kotlinx.android.synthetic.main.home_fragment.*
+import kotlinx.android.synthetic.main.include_empty.view.*
 
 class HomeFragment : Fragment(), ShowStates {
 
@@ -27,7 +29,7 @@ class HomeFragment : Fragment(), ShowStates {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeBinding = HomeFragmentBinding.inflate(layoutInflater, container, false)
         return homeBinding.root
     }

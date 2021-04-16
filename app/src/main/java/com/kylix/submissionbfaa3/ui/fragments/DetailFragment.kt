@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.fragments
+package com.kylix.submissionbfaa3.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -37,7 +37,7 @@ class DetailFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         detailBinding = DetailFragmentBinding.inflate(layoutInflater, container, false)
         detailBinding.lifecycleOwner = viewLifecycleOwner
         observeDetail()
@@ -61,16 +61,16 @@ class DetailFragment : Fragment() {
     }
 
     private fun observeDetail() {
-       detailViewModel.data(args.Username).observe(viewLifecycleOwner, Observer {
+        detailViewModel.data(args.Username).observe(viewLifecycleOwner, Observer {
            if(it.state == State.SUCCESS){
                githubUser = it.data!!
                detailBinding.data = it.data
            }
-       })
+        })
 
-        detailViewModel.isFavorite.observe(viewLifecycleOwner, Observer { fav ->
-            isFavorite = fav
-            changeFavorite(fav)
+        detailViewModel.isFavorite.observe(viewLifecycleOwner, Observer {
+            isFavorite = it
+            changeFavorite(it)
         })
     }
 

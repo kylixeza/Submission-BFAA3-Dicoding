@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.database
+package com.kylix.submissionbfaa3.data.local
 
 import android.database.Cursor
 import androidx.lifecycle.LiveData

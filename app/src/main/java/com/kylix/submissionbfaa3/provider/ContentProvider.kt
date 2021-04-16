@@ -6,8 +6,8 @@ import android.content.Context
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import com.kylix.submissionbfaa3.database.UserDao
-import com.kylix.submissionbfaa3.database.UserDatabase
+import com.kylix.submissionbfaa3.data.local.UserDao
+import com.kylix.submissionbfaa3.data.local.UserDatabase
 
 class ContentProvider : ContentProvider() {
     private lateinit var userDao: UserDao

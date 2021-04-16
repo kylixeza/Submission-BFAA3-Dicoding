@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.fragments
+package com.kylix.submissionbfaa3.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,7 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.submissionbfaa3.R
-import com.kylix.submissionbfaa3.adapter.UserAdapter
+import com.kylix.submissionbfaa3.ui.adapter.UserAdapter
 import com.kylix.submissionbfaa3.databinding.FollowFragmentBinding
 import com.kylix.submissionbfaa3.utils.ShowStates
 import com.kylix.submissionbfaa3.utils.State
@@ -86,7 +86,7 @@ class FollowFragment : Fragment(), ShowStates {
                         followSuccess(followBinding)
                         usersAdapter.run { setData(it.data) }
                     } else {
-                        followError(followBinding, resources.getString(R.string.not_have, username, type))
+                            followError(followBinding, resources.getString(R.string.not_have, username, type))
                     }
                 State.LOADING -> followLoading(followBinding)
                 State.ERROR -> followError(followBinding, it.message)

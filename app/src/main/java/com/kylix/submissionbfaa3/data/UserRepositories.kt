@@ -1,7 +1,8 @@
-package com.kylix.submissionbfaa3.networking
+package com.kylix.submissionbfaa3.data
 
 import androidx.lifecycle.liveData
-import com.kylix.submissionbfaa3.database.UserDao
+import com.kylix.submissionbfaa3.data.local.UserDao
+import com.kylix.submissionbfaa3.data.remote.RetrofitConfig
 import com.kylix.submissionbfaa3.utils.Resource
 import kotlinx.coroutines.Dispatchers
 

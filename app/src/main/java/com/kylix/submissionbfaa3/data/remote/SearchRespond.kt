@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.networking
+package com.kylix.submissionbfaa3.data.remote
 
 import android.os.Parcelable
 import com.kylix.submissionbfaa3.model.GithubUser

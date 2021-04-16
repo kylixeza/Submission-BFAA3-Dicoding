@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.database
+package com.kylix.submissionbfaa3.data.local
 
 import android.content.Context
 import androidx.room.Database
@@ -12,7 +12,7 @@ abstract class UserDatabase: RoomDatabase() {
         @Volatile
         private var INSTANCE: UserDatabase? = null
 
-        fun getDatabase(context: Context): UserDatabase{
+        fun getDatabase(context: Context): UserDatabase {
             val mInstance = INSTANCE
             if (mInstance != null)
                 return mInstance

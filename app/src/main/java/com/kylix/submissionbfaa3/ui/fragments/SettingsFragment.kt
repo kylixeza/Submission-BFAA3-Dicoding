@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.fragments
+package com.kylix.submissionbfaa3.ui.fragments
 
 import android.content.SharedPreferences
 import android.os.Bundle

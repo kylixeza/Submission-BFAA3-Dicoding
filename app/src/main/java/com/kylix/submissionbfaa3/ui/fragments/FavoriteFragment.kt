@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.fragments
+package com.kylix.submissionbfaa3.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.submissionbfaa3.R
-import com.kylix.submissionbfaa3.adapter.UserAdapter
+import com.kylix.submissionbfaa3.ui.adapter.UserAdapter
 import com.kylix.submissionbfaa3.databinding.FavoriteFragmentBinding
 import com.kylix.submissionbfaa3.utils.ShowStates
 import com.kylix.submissionbfaa3.viewmodels.FavoriteViewModel
@@ -25,7 +25,7 @@ class FavoriteFragment : Fragment(), ShowStates {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         val actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.title = context?.resources?.getString(R.string.favorite)
         favoriteBinding = FavoriteFragmentBinding.inflate(layoutInflater, container, false)

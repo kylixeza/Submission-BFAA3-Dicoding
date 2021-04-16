@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.activities
+package com.kylix.submissionbfaa3.ui.activities
 
 import android.os.Bundle
 import android.view.View

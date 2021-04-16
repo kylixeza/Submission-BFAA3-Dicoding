@@ -1,6 +1,7 @@
 package com.kylix.submissionbfaa3.utils
 
 import android.view.View
+import androidx.databinding.adapters.ViewBindingAdapter
 import com.kylix.submissionbfaa3.databinding.FavoriteFragmentBinding
 import com.kylix.submissionbfaa3.databinding.FollowFragmentBinding
 import com.kylix.submissionbfaa3.databinding.HomeFragmentBinding

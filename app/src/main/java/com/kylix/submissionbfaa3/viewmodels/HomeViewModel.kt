@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.ViewModel
 import com.kylix.submissionbfaa3.model.GithubUser
-import com.kylix.submissionbfaa3.networking.UserRepositories
+import com.kylix.submissionbfaa3.data.UserRepositories
 import com.kylix.submissionbfaa3.utils.Resource
 
 class HomeViewModel : ViewModel() {

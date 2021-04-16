@@ -4,8 +4,8 @@ import android.R
 import android.content.Context
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
-import com.kylix.submissionbfaa3.database.UserDao
-import com.kylix.submissionbfaa3.database.UserDatabase
+import com.kylix.submissionbfaa3.data.local.UserDao
+import com.kylix.submissionbfaa3.data.local.UserDatabase
 import com.kylix.submissionbfaa3.model.GithubUser
 
 class WidgetDataProvider(private val context: Context): RemoteViewsService.RemoteViewsFactory {

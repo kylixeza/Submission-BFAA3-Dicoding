@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.activities
+package com.kylix.submissionbfaa3.ui.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,9 @@ import com.kylix.submissionbfaa3.databinding.ActivitySplashBinding
 import kotlinx.android.synthetic.main.activity_splash.*
 
 class SplashActivity : AppCompatActivity() {
+    companion object {
+        const val TIME_FOR_SPLASH = 3000L
+    }
     private lateinit var splashBinding: ActivitySplashBinding
     private lateinit var handler: Handler
 
@@ -17,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         splashBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(splashBinding.root)
 
-        handler = Handler()
+        handler = Handler(mainLooper)
         progress.start()
         progress.loadingColor = R.color.colorAccent
         handler.postDelayed({
@@ -25,6 +28,6 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
             progress.stop()
             finish()
-        }, 3000)
+        }, TIME_FOR_SPLASH)
     }
 }

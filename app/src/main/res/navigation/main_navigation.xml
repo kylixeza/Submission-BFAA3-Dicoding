@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/home_destination"
-        android:name="com.kylix.submissionbfaa3.fragments.HomeFragment"
+        android:name="com.kylix.submissionbfaa3.ui.fragments.HomeFragment"
         android:label="@string/app_name"
         tools:layout="@layout/home_fragment">
         <action
@@ -34,7 +34,7 @@
     </fragment>
     <fragment
         android:id="@+id/details_destination"
-        android:name="com.kylix.submissionbfaa3.fragments.DetailFragment"
+        android:name="com.kylix.submissionbfaa3.ui.fragments.DetailFragment"
         android:label="{Username}"
         tools:layout="@layout/detail_fragment" >
         <argument
@@ -44,7 +44,7 @@
     </fragment>
     <fragment
         android:id="@+id/favorite_destination"
-        android:name="com.kylix.submissionbfaa3.fragments.FavoriteFragment"
+        android:name="com.kylix.submissionbfaa3.ui.fragments.FavoriteFragment"
         android:label="favorite_fragment"
         tools:layout="@layout/favorite_fragment" >
         <action
@@ -57,6 +57,6 @@
     </fragment>
     <fragment
         android:id="@+id/settings_destination"
-        android:name="com.kylix.submissionbfaa3.fragments.SettingsFragment"
+        android:name="com.kylix.submissionbfaa3.ui.fragments.SettingsFragment"
         android:label="SettingsFragment"/>
 </navigation>

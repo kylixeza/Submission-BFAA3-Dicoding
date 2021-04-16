@@ -4,10 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.kylix.submissionbfaa3.database.UserDao
-import com.kylix.submissionbfaa3.database.UserDatabase
+import com.kylix.submissionbfaa3.data.local.UserDao
+import com.kylix.submissionbfaa3.data.local.UserDatabase
 import com.kylix.submissionbfaa3.model.GithubUser
-import com.kylix.submissionbfaa3.networking.UserFavoriteRepositories
+import com.kylix.submissionbfaa3.data.UserFavoriteRepositories
 import com.kylix.submissionbfaa3.utils.Resource
 import kotlinx.coroutines.launch
 

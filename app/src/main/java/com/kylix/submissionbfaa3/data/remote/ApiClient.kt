@@ -1,4 +1,4 @@
-package com.kylix.submissionbfaa3.networking
+package com.kylix.submissionbfaa3.data.remote
 
 import com.kylix.submissionbfaa3.model.GithubUser
 import retrofit2.http.GET
@@ -9,21 +9,25 @@ interface ApiClient {
 
         @GET("search/users")
         suspend fun searchUsers(
-                @Query("q") q: String?
+                @Query("q")
+                q: String?
         ): SearchRespond
 
         @GET("users/{username}")
         suspend fun userDetail(
-                @Path("username") username: String?
+                @Path("username")
+                username: String?
         ): GithubUser
 
         @GET("users/{username}/followers")
         suspend fun userFollower(
-                @Path("username") username: String?
+                @Path("username")
+                username: String?
         ): List<GithubUser>
 
         @GET("users/{username}/following")
         suspend fun userFollowing(
-                @Path("username") username: String?
+                @Path("username")
+                username: String?
         ): List<GithubUser>
 }

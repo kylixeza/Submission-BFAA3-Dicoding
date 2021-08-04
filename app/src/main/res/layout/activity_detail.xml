@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DetailActivity">
+
+    <ImageView
+        android:id="@+id/iv_detail_avatar"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:contentDescription="@string/app_name"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/tv_detail_repos"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@drawable/user1"/>
+
+    <!--Public Repos Configurations-->
+    <TextView
+        android:id="@+id/tv_detail_repos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="18dp"
+        android:text="@string/repository"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif-condensed"
+        app:layout_constraintStart_toEndOf="@id/iv_detail_avatar"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_numberOfRepos"
+        app:layout_constraintEnd_toStartOf="@id/tv_detail_followers"/>
+
+    <TextView
+        android:id="@+id/tv_detail_numberOfRepos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="0"
+        app:layout_constraintStart_toStartOf="@id/tv_detail_repos"
+        app:layout_constraintTop_toTopOf="@id/iv_detail_avatar"
+        app:layout_constraintEnd_toEndOf="@id/tv_detail_repos"/>
+    <!--Public Repos Configurations End-->
+
+    <!-- Followers Configurations-->
+    <TextView
+        android:id="@+id/tv_detail_followers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="18dp"
+        android:text="@string/followers"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:fontFamily="sans-serif-condensed"
+        app:layout_constraintStart_toEndOf="@id/tv_detail_repos"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_numberOfFollowers"
+        app:layout_constraintEnd_toStartOf="@id/tv_detail_following"/>
+
+    <TextView
+        android:id="@+id/tv_detail_numberOfFollowers"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="sans-serif-condensed"
+        tools:text="1"
+        app:layout_constraintTop_toTopOf="@id/tv_detail_numberOfRepos"
+        app:layout_constraintStart_toStartOf="@id/tv_detail_followers"
+        app:layout_constraintEnd_toEndOf="@id/tv_detail_followers"/>
+    <!-- Followers Configurations End-->
+
+    <!-- Following Configurations-->
+    <TextView
+        android:id="@+id/tv_detail_following"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:text="@string/following"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-condensed"
+        app:layout_constraintStart_toEndOf="@id/tv_detail_followers"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_numberOfFollowing"/>
+
+    <TextView
+        android:id="@+id/tv_detail_numberOfFollowing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/tv_detail_following"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@id/tv_detail_following"
+        app:layout_constraintTop_toTopOf="@id/tv_detail_numberOfFollowers"
+        tools:text="2" />
+    <!-- Following Configurations End-->
+
+    <TextView
+        android:id="@+id/tv_detail_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:fontFamily="sans-serif-condensed"
+        android:textColor="@android:color/black"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@id/iv_detail_avatar"
+        app:layout_constraintTop_toBottomOf="@id/iv_detail_avatar"
+        tools:text="@string/name" />
+
+    <TextView
+        android:id="@+id/tv_detail_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_name"
+        app:layout_constraintStart_toStartOf="@id/tv_detail_name"
+        tools:text="@string/company"/>
+
+    <TextView
+        android:id="@+id/tv_detail_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="4dp"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@id/tv_detail_company"
+        app:layout_constraintTop_toBottomOf="@id/tv_detail_company"
+        tools:text="@string/location"
+        app:drawableStartCompat="@drawable/ic_location_city" />
+</androidx.constraintlayout.widget.ConstraintLayout>

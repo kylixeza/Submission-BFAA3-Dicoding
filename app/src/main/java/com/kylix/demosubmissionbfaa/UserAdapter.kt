@@ -1,10 +1,12 @@
 package com.kylix.demosubmissionbfaa
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.kylix.demosubmissionbfaa.DetailActivity.Companion.EXTRA_USER
 import com.kylix.demosubmissionbfaa.databinding.ItemListUserBinding
 import com.kylix.demosubmissionbfaa.model.User
 
@@ -44,6 +46,12 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
                 .load(user.avatar)
                 .apply(RequestOptions.circleCropTransform())
                 .into(view.ivImgUser)
+
+            itemView.setOnClickListener {
+                val intent = Intent(itemView.context, DetailActivity::class.java)
+                intent.putExtra(EXTRA_USER, user)
+                itemView.context.startActivity(intent)
+            }
         }
     }
 }

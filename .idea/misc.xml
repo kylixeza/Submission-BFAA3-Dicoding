@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/layout/activity_detail.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/layout/backup_acitivity_detail.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/layout/item_list_user.xml" value="0.278125" />
       </map>
     </option>

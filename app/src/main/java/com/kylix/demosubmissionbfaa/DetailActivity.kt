@@ -39,6 +39,12 @@ class DetailActivity : AppCompatActivity() {
         supportActionBar?.apply {
             setDisplayHomeAsUpEnabled(true)
             title = user?.username
+            elevation = 0f
         }
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
     }
 }

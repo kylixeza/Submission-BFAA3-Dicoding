@@ -2,8 +2,6 @@ package com.kylix.demosubmissionbfaa
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.viewbinding.library.activity.viewBinding
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.data.DataDummy
 import com.kylix.demosubmissionbfaa.databinding.ActivityMainBinding

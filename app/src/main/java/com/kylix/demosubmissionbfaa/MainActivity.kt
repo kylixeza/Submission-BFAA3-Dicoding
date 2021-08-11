@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.data.DataDummy
 import com.kylix.demosubmissionbfaa.databinding.ActivityMainBinding
+import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
 
 class MainActivity : AppCompatActivity() {
 

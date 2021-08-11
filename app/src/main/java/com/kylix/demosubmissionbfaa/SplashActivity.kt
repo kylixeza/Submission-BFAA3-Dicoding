@@ -5,12 +5,9 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.kylix.demosubmissionbfaa.databinding.ActivitySplashBinding
+import com.kylix.demosubmissionbfaa.util.Constanta.TIME_SPLASH
 
 class SplashActivity : AppCompatActivity() {
-
-    companion object {
-        const val TIME_SPLASH = 1500L
-    }
 
     private lateinit var splashBinding: ActivitySplashBinding
 

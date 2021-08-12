@@ -1,16 +1,33 @@
 package com.kylix.demosubmissionbfaa.model
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import com.squareup.moshi.Json
 
-@Parcelize
 data class User (
+
+    @field:Json(name = "id")
+    val id: Int,
+
+    @field:Json(name = "login")
     val username: String,
+
+    @field:Json(name = "name")
     val name: String,
+
+    @field:Json(name = "location")
     val location: String,
+
+    @field:Json(name = "company")
     val company: String,
-    val repository: String,
-    val follower: String,
-    val following: String,
-    val avatar: Int
-): Parcelable
+
+    @field:Json(name = "public_repos")
+    val repository: Int,
+
+    @field:Json(name = "followers")
+    val follower: Int,
+
+    @field:Json(name = "following")
+    val following: Int,
+
+    @field:Json(name = "avatar_url")
+    val avatar: String
+)

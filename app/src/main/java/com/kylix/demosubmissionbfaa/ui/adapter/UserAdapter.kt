@@ -10,6 +10,7 @@ import com.kylix.demosubmissionbfaa.databinding.ItemListUserBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.detail.DetailActivity
 import com.kylix.demosubmissionbfaa.util.Constanta.EXTRA_USER
+import retrofit2.Response
 
 class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
@@ -40,7 +41,6 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
             view.apply {
                 tvUsername.text = user.username
-                tvName.text = user.name
             }
 
             Glide.with(itemView.context)
@@ -50,7 +50,7 @@ class UserAdapter: RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
 
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailActivity::class.java)
-                intent.putExtra(EXTRA_USER, user)
+                intent.putExtra(EXTRA_USER, user.username)
                 itemView.context.startActivity(intent)
             }
         }

@@ -17,7 +17,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/tv_detail_repos"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/user1"/>
+        tools:srcCompat="@mipmap/ic_launcher_github"/>
 
     <!--Public Repos Configurations-->
     <TextView

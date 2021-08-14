@@ -12,11 +12,12 @@ import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.FollowerFragmentBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
+import com.kylix.demosubmissionbfaa.util.ViewStateCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class FollowerFragment(private val username: String) : Fragment() {
+class FollowerFragment(private val username: String) : Fragment(), ViewStateCallback {
 
     private val followerBinding: FollowerFragmentBinding by viewBinding()
 
@@ -40,17 +41,54 @@ class FollowerFragment(private val username: String) : Fragment() {
         }
 
         val retrofit = RetrofitService.create()
+
+        onLoading()
         retrofit.getUserFollowers(username).enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                response.body()?.let { userAdapter.setAllData(it) }
+                if (response.body().isNullOrEmpty())
+                    onFailed(null)
+                else {
+                    response.body()?.let { userAdapter.setAllData(it) }
+                    onSuccess()
+                }
+
             }
 
             override fun onFailure(call: Call<List<User>>, t: Throwable) {
-
+                onFailed(t.message)
             }
 
         })
+    }
 
+    override fun onSuccess() {
+        followerBinding.apply {
+            tvMessage.visibility = invisible
+            followProgressBar.visibility = invisible
+            rvListUserFollower.visibility = visible
+        }
+    }
+
+    override fun onLoading() {
+        followerBinding.apply {
+            tvMessage.visibility = invisible
+            followProgressBar.visibility = visible
+            rvListUserFollower.visibility = invisible
+        }
+    }
+
+    override fun onFailed(message: String?) {
+        followerBinding.apply {
+            if (message == null) {
+                tvMessage.text = resources.getString(R.string.followers_not_found, username)
+                tvMessage.visibility = visible
+            } else {
+                tvMessage.text = message
+                tvMessage.visibility = visible
+            }
+            followProgressBar.visibility = invisible
+            rvListUserFollower.visibility = invisible
+        }
     }
 
 }

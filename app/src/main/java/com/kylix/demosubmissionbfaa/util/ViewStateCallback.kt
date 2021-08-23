@@ -2,9 +2,9 @@ package com.kylix.demosubmissionbfaa.util
 
 import android.view.View
 
-interface ViewStateCallback {
+interface ViewStateCallback<T> {
 
-    fun onSuccess()
+    fun onSuccess(data: T)
     fun onLoading()
     fun onFailed(message: String?)
 

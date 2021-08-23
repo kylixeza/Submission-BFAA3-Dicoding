@@ -7,13 +7,13 @@ import com.kylix.demosubmissionbfaa.ui.follower.FollowerFragment
 import com.kylix.demosubmissionbfaa.ui.following.FollowingFragment
 import com.kylix.demosubmissionbfaa.util.Constanta.TAB_TITLES
 
-class FollowPagerAdapter(activity: AppCompatActivity, private val username: String) : FragmentStateAdapter(activity) {
+class FollowPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
 
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = FollowerFragment(username)
-            1 -> fragment = FollowingFragment(username)
+            0 -> fragment = FollowerFragment()
+            1 -> fragment = FollowingFragment()
         }
         return fragment as Fragment
     }

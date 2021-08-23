@@ -3,6 +3,7 @@ package com.kylix.demosubmissionbfaa.ui.detail
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
@@ -10,38 +11,36 @@ import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.ActivityDetailBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.FollowPagerAdapter
+import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.Constanta.EXTRA_USER
 import com.kylix.demosubmissionbfaa.util.Constanta.TAB_TITLES
+import com.kylix.demosubmissionbfaa.util.ViewStateCallback
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailActivity : AppCompatActivity() {
+class DetailActivity : AppCompatActivity(), ViewStateCallback<User?> {
 
     private lateinit var detailBinding: ActivityDetailBinding
-    private var user: User? = null
+    private lateinit var viewModel: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         detailBinding = ActivityDetailBinding.inflate(layoutInflater)
         setContentView(detailBinding.root)
+        viewModel = ViewModelProvider(this).get(DetailViewModel::class.java)
+
+        supportActionBar?.apply {
+            setDisplayHomeAsUpEnabled(true)
+            elevation = 0f
+        }
 
         val username = intent.getStringExtra(EXTRA_USER)
+        Constanta.USERNAME = username.toString()
 
-        val retrofit = RetrofitService.create()
-        retrofit.getDetailUser(username.toString()).enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                user = response.body()
-                setView(user)
-            }
+        viewModel.getDetailUser(username, this@DetailActivity)
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
-                Log.e(this.toString(), t.message.toString())
-            }
-
-        })
-
-        val pageAdapter = FollowPagerAdapter(this, username.toString())
+        val pageAdapter = FollowPagerAdapter(this)
 
         detailBinding.apply {
             viewPager.adapter = pageAdapter
@@ -56,25 +55,33 @@ class DetailActivity : AppCompatActivity() {
         return super.onSupportNavigateUp()
     }
 
-    private fun setView(user: User?) {
+    /*private fun setView(user: User?) {
+
+    }*/
+
+    override fun onSuccess(data: User?) {
         detailBinding.apply {
-            tvDetailNumberOfRepos.text = user?.repository.toString()
-            tvDetailNumberOfFollowers.text = user?.follower.toString()
-            tvDetailNumberOfFollowing.text = user?.following.toString()
-            tvDetailName.text = user?.name
-            tvDetailCompany.text = user?.company
-            tvDetailLocation.text = user?.location
+            tvDetailNumberOfRepos.text = data?.repository.toString()
+            tvDetailNumberOfFollowers.text = data?.follower.toString()
+            tvDetailNumberOfFollowing.text = data?.following.toString()
+            tvDetailName.text = data?.name
+            tvDetailCompany.text = data?.company
+            tvDetailLocation.text = data?.location
 
             Glide.with(this@DetailActivity)
-                .load(user?.avatar)
+                .load(data?.avatar)
                 .apply(RequestOptions.circleCropTransform())
                 .into(ivDetailAvatar)
 
-            supportActionBar?.apply {
-                setDisplayHomeAsUpEnabled(true)
-                title = user?.username
-                elevation = 0f
-            }
+            supportActionBar?.title = data?.username
         }
+    }
+
+    override fun onLoading() {
+
+    }
+
+    override fun onFailed(message: String?) {
+
     }
 }

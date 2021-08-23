@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import com.kylix.demosubmissionbfaa.databinding.ActivitySplashBinding
+import com.kylix.demosubmissionbfaa.ui.main.MainActivity
 import com.kylix.demosubmissionbfaa.util.Constanta.TIME_SPLASH
 
 class SplashActivity : AppCompatActivity() {

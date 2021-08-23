@@ -1,29 +1,31 @@
-package com.kylix.demosubmissionbfaa
+package com.kylix.demosubmissionbfaa.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
+import com.kylix.demosubmissionbfaa.R
 import com.kylix.demosubmissionbfaa.databinding.ActivityMainBinding
-import com.kylix.demosubmissionbfaa.model.SearchResponse
+import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
 import com.kylix.demosubmissionbfaa.util.ViewStateCallback
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class MainActivity : AppCompatActivity(), ViewStateCallback {
+class MainActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
 
     private lateinit var mainBinding: ActivityMainBinding
     private lateinit var userQuery: String
+    private lateinit var viewModel: MainViewModel
+    private lateinit var userAdapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
 
-        val userAdapter = UserAdapter()
+        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+
+        userAdapter = UserAdapter()
         mainBinding.includeMainSearch.rvListUser.apply {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL, false)
@@ -35,7 +37,7 @@ class MainActivity : AppCompatActivity(), ViewStateCallback {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     userQuery = query.toString()
                     clearFocus()
-                    startSearching(userAdapter)
+                    viewModel.searchUser(userQuery, this@MainActivity)
                     return true
                 }
 
@@ -47,31 +49,10 @@ class MainActivity : AppCompatActivity(), ViewStateCallback {
         }
     }
 
-    fun startSearching(userAdapter: UserAdapter) {
-        val retrofit = RetrofitService.create()
+    override fun onSuccess(data: List<User>) {
+        
+        userAdapter.setAllData(data)
 
-        onLoading()
-        retrofit.searchUsers(userQuery).enqueue(object : Callback<SearchResponse> {
-            override fun onResponse(
-                call: Call<SearchResponse>,
-                response: Response<SearchResponse>
-            ) {
-                if (response.body()?.items?.isNullOrEmpty() == true)
-                    onFailed(null)
-                else {
-                    response.body()?.items?.let { userAdapter.setAllData(it) }
-                    onSuccess()
-                }
-            }
-
-            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
-                onFailed(t.message)
-            }
-
-        })
-    }
-
-    override fun onSuccess() {
         mainBinding.includeMainSearch.apply {
             ivSearchIcon.visibility = invisible
             tvMessage.visibility = invisible

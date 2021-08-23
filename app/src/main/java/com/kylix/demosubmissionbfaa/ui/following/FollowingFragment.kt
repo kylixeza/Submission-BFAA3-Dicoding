@@ -6,21 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.R
-import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.FollowerFragmentBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
+import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.ViewStateCallback
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
-class FollowingFragment(private val username: String) : Fragment(), ViewStateCallback {
+class FollowingFragment() : Fragment(), ViewStateCallback<List<User>> {
 
     private val followingBinding: FollowerFragmentBinding by viewBinding()
-    //private lateinit var viewModel: FollowingViewModel
+    private lateinit var viewModel: FollowingViewModel
+    private lateinit var userAdapter: UserAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,35 +30,21 @@ class FollowingFragment(private val username: String) : Fragment(), ViewStateCal
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        //viewModel = ViewModelProvider(this).get(FollowingViewModel::class.java)
 
-        val userAdapter = UserAdapter()
+        viewModel = ViewModelProvider(this).get(FollowingViewModel::class.java)
+
+        userAdapter = UserAdapter()
         followingBinding.rvListUserFollower.apply {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        val retrofit = RetrofitService.create()
-
-        onLoading()
-        retrofit.getUserFollowing(username).enqueue(object : Callback<List<User>> {
-            override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {
-                if (response.body().isNullOrEmpty())
-                    onFailed(null)
-                else {
-                    response.body()?.let { userAdapter.setAllData(it) }
-                    onSuccess()
-                }
-            }
-
-            override fun onFailure(call: Call<List<User>>, t: Throwable) {
-                onFailed(t.message)
-            }
-
-        })
+        viewModel.getUserFollowing(Constanta.USERNAME, this@FollowingFragment)
     }
 
-    override fun onSuccess() {
+    override fun onSuccess(data: List<User>) {
+        userAdapter.setAllData(data)
+
         followingBinding.apply {
             tvMessage.visibility = invisible
             followProgressBar.visibility = invisible
@@ -78,7 +63,7 @@ class FollowingFragment(private val username: String) : Fragment(), ViewStateCal
     override fun onFailed(message: String?) {
         followingBinding.apply {
             if (message == null) {
-                tvMessage.text = resources.getString(R.string.following_not_found, username)
+                tvMessage.text = resources.getString(R.string.following_not_found, Constanta.USERNAME)
                 tvMessage.visibility = visible
             } else {
                 tvMessage.text = message

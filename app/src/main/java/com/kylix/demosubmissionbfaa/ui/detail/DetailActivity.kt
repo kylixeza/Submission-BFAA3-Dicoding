@@ -11,6 +11,8 @@ import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.ActivityDetailBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.FollowPagerAdapter
+import com.kylix.demosubmissionbfaa.ui.follower.FollowerFragment
+import com.kylix.demosubmissionbfaa.ui.following.FollowingFragment
 import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.Constanta.EXTRA_USER
 import com.kylix.demosubmissionbfaa.util.Constanta.TAB_TITLES
@@ -36,11 +38,10 @@ class DetailActivity : AppCompatActivity(), ViewStateCallback<User?> {
         }
 
         val username = intent.getStringExtra(EXTRA_USER)
-        Constanta.USERNAME = username.toString()
 
         viewModel.getDetailUser(username, this@DetailActivity)
 
-        val pageAdapter = FollowPagerAdapter(this)
+        val pageAdapter = FollowPagerAdapter(this, username.toString())
 
         detailBinding.apply {
             viewPager.adapter = pageAdapter
@@ -54,10 +55,6 @@ class DetailActivity : AppCompatActivity(), ViewStateCallback<User?> {
         onBackPressed()
         return super.onSupportNavigateUp()
     }
-
-    /*private fun setView(user: User?) {
-
-    }*/
 
     override fun onSuccess(data: User?) {
         detailBinding.apply {

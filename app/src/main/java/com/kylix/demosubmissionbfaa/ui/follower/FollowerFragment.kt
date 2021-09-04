@@ -15,11 +15,31 @@ import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
 import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.ViewStateCallback
 
-class FollowerFragment : Fragment(), ViewStateCallback<List<User>> {
+class FollowerFragment: Fragment(), ViewStateCallback<List<User>> {
+
+    companion object {
+        private const val KEY_BUNDLE = "USERNAME"
+
+        fun getInstance(username: String): Fragment {
+            return FollowerFragment().apply {
+                arguments = Bundle().apply {
+                    putString(KEY_BUNDLE, username)
+                }
+            }
+        }
+    }
 
     private val followerBinding: FollowerFragmentBinding by viewBinding()
     private lateinit var viewModel: FollowerViewModel
     private lateinit var userAdapter: UserAdapter
+    private var username: String? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            username = it.getString(KEY_BUNDLE)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,15 +58,12 @@ class FollowerFragment : Fragment(), ViewStateCallback<List<User>> {
             adapter = userAdapter
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
-
-
-        viewModel.getUserFollowers(Constanta.USERNAME, this@FollowerFragment)
+        viewModel.getUserFollowers(username.toString(), this@FollowerFragment)
 
     }
 
     override fun onSuccess(data: List<User>) {
         userAdapter.setAllData(data)
-
         followerBinding.apply {
             tvMessage.visibility = invisible
             followProgressBar.visibility = invisible
@@ -65,7 +82,7 @@ class FollowerFragment : Fragment(), ViewStateCallback<List<User>> {
     override fun onFailed(message: String?) {
         followerBinding.apply {
             if (message == null) {
-                tvMessage.text = resources.getString(R.string.followers_not_found, Constanta.USERNAME)
+                tvMessage.text = resources.getString(R.string.followers_not_found, username)
                 tvMessage.visibility = visible
             } else {
                 tvMessage.text = message

@@ -11,10 +11,9 @@ import retrofit2.Response
 
 class FollowerViewModel : ViewModel() {
 
-    private val retrofit: ApiService = RetrofitService.create()
-
+    private val retrofit = RetrofitService.create()
+    
     fun getUserFollowers(username: String, viewCallback: ViewStateCallback<List<User>>) {
-
         viewCallback.onLoading()
         retrofit.getUserFollowers(username).enqueue(object : Callback<List<User>> {
             override fun onResponse(call: Call<List<User>>, response: Response<List<User>>) {

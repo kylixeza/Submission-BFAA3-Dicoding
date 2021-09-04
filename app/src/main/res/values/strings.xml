@@ -13,4 +13,6 @@
     <string name="user_not_found">User Not Found :(</string>
     <string name="followers_not_found">%s Has No Followers</string>
     <string name="following_not_found">%s Does Not Follow Anyone</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

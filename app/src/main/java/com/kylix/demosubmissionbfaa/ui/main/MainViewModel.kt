@@ -14,9 +14,9 @@ class MainViewModel: ViewModel() {
 
     private val retrofit: ApiService = RetrofitService.create()
 
-    fun searchUser(queryUser: String, viewCallback: ViewStateCallback<List<User>>) {
+    fun searchUser(query: String, viewCallback: ViewStateCallback<List<User>>) {
         viewCallback.onLoading()
-        retrofit.searchUsers(queryUser).enqueue(object : Callback<SearchResponse> {
+        retrofit.searchUsers(query).enqueue(object : Callback<SearchResponse> {
             override fun onResponse(
                 call: Call<SearchResponse>,
                 response: Response<SearchResponse>

@@ -1,6 +1,7 @@
 package com.kylix.demosubmissionbfaa.ui.adapter
 
 import android.content.Intent
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -9,6 +10,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.kylix.demosubmissionbfaa.databinding.ItemListUserBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.detail.DetailActivity
+import com.kylix.demosubmissionbfaa.ui.follower.FollowerFragment
+import com.kylix.demosubmissionbfaa.ui.following.FollowingFragment
+import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.Constanta.EXTRA_USER
 import retrofit2.Response
 

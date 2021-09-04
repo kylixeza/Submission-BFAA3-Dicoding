@@ -44,15 +44,12 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     return false
                 }
-
             })
         }
     }
 
     override fun onSuccess(data: List<User>) {
-        
         userAdapter.setAllData(data)
-
         mainBinding.includeMainSearch.apply {
             ivSearchIcon.visibility = invisible
             tvMessage.visibility = invisible

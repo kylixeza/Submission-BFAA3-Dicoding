@@ -11,7 +11,7 @@ import retrofit2.Response
 
 class FollowingViewModel : ViewModel() {
 
-    private val retrofit: ApiService = RetrofitService.create()
+    private val retrofit = RetrofitService.create()
 
     fun getUserFollowing(username: String, viewCallback: ViewStateCallback<List<User>>) {
         viewCallback.onLoading()

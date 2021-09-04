@@ -15,12 +15,32 @@ import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
 import com.kylix.demosubmissionbfaa.util.Constanta
 import com.kylix.demosubmissionbfaa.util.ViewStateCallback
 
-class FollowingFragment() : Fragment(), ViewStateCallback<List<User>> {
+class FollowingFragment : Fragment(), ViewStateCallback<List<User>> {
+
+    companion object {
+        private const val KEY_BUNDLE = "USERNAME"
+
+        fun getInstance(username: String): Fragment {
+            return FollowingFragment().apply {
+                arguments = Bundle().apply {
+                    putString(KEY_BUNDLE, username)
+                }
+            }
+        }
+    }
 
     private val followingBinding: FollowerFragmentBinding by viewBinding()
     private lateinit var viewModel: FollowingViewModel
     private lateinit var userAdapter: UserAdapter
+    private var username: String? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+            username = it.getString(KEY_BUNDLE)
+        }
+    }
+    
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +59,7 @@ class FollowingFragment() : Fragment(), ViewStateCallback<List<User>> {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        viewModel.getUserFollowing(Constanta.USERNAME, this@FollowingFragment)
+        viewModel.getUserFollowing(username.toString(), this@FollowingFragment)
     }
 
     override fun onSuccess(data: List<User>) {
@@ -63,7 +83,7 @@ class FollowingFragment() : Fragment(), ViewStateCallback<List<User>> {
     override fun onFailed(message: String?) {
         followingBinding.apply {
             if (message == null) {
-                tvMessage.text = resources.getString(R.string.following_not_found, Constanta.USERNAME)
+                tvMessage.text = resources.getString(R.string.following_not_found, username)
                 tvMessage.visibility = visible
             } else {
                 tvMessage.text = message

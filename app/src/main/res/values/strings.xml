@@ -1,18 +1,18 @@
 <resources>
-    <string name="app_name">Github App</string>
-    <string name="username">Username</string>
-    <string name="name">Name</string>
-    <string name="location">Location</string>
-    <string name="company">Company</string>
-    <string name="repository">Repository</string>
-    <string name="followers">Followers</string>
-    <string name="following">Following</string>
+    <string name="app_name" translatable="false">Github App</string>
 
-    <string name="search_message">Find Your Favorite User</string>
-    <string name="search_hint">Looking For Who?</string>
-    <string name="user_not_found">User Not Found :(</string>
-    <string name="followers_not_found">%s Has No Followers</string>
-    <string name="following_not_found">%s Does Not Follow Anyone</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="username" translatable="true">Username</string>
+    <string name="name" translatable="true">Name</string>
+    <string name="location" translatable="true">Location</string>
+    <string name="company" translatable="true">Company</string>
+    <string name="repository" translatable="true">Repository</string>
+    <string name="followers" translatable="true">Followers</string>
+    <string name="following" translatable="true">Following</string>
+
+    <string name="search_message" translatable="true">Find Your Favorite User</string>
+    <string name="search_hint" translatable="true">Looking For Who?</string>
+    <string name="user_not_found" translatable="true">User Not Found :(</string>
+    <string name="followers_not_found" translatable="true">%s Has No Followers</string>
+    <string name="following_not_found" translatable="true">%s Does Not Follow Anyone</string>
+    <string name="languages" translatable="true">Languages</string>
 </resources>

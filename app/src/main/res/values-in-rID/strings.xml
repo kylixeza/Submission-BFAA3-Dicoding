@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="username" translatable="true">Nama Pengguna</string>
+    <string name="name" translatable="true">Nama</string>
+    <string name="location" translatable="true">Lokasi</string>
+    <string name="company" translatable="true">Perusahaan</string>
+    <string name="repository" translatable="true">Repository</string>
+    <string name="followers" translatable="true">Pengikut</string>
+    <string name="following" translatable="true">Mengikuti</string>
+
+    <string name="search_message" translatable="true">Temukan Pengguna Favoritmu</string>
+    <string name="search_hint" translatable="true">Lagi Cari Siapa Nih?</string>
+    <string name="user_not_found" translatable="true">Pengguna Tidak Ditemukan :(</string>
+    <string name="followers_not_found" translatable="true">%s Tidak Memiliki Pengikut</string>
+    <string name="following_not_found" translatable="true">%s Tidak Mengikuti Siapapun</string>
+    <string name="languages" translatable="true">Bahasa</string>
+</resources>

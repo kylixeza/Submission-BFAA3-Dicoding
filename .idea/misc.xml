@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/drawable/ic_language.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/drawable/ic_research_empty.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/drawable/ic_search_empty.xml" value="0.2942708333333333" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/drawable/ic_search_failed.xml" value="0.2942708333333333" />
@@ -19,6 +20,7 @@
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/layout/include_tab_follow.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/layout/item_list_user.xml" value="0.278125" />
         <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/menu/main_menu.xml" value="0.278125" />
+        <entry key="..\:/Users/SHIELD/AndroidStudioProjects/DemoSubmissionBFAA/app/src/main/res/menu/option_menu.xml" value="0.278125" />
       </map>
     </option>
   </component>

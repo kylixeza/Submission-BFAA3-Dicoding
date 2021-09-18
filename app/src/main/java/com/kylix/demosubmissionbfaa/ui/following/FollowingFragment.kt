@@ -9,6 +9,7 @@ import android.viewbinding.library.fragment.viewBinding
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.R
+import com.kylix.demosubmissionbfaa.data.Resource
 import com.kylix.demosubmissionbfaa.databinding.FollowerFragmentBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
@@ -59,7 +60,13 @@ class FollowingFragment : Fragment(), ViewStateCallback<List<User>> {
             layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         }
 
-        viewModel.getUserFollowing(username.toString(), this@FollowingFragment)
+        viewModel.getUserFollowing(username.toString()).observe(viewLifecycleOwner, {
+            when (it) {
+                is Resource.Error -> onFailed(it.message)
+                is Resource.Loading -> onLoading()
+                is Resource.Success -> it.data?.let { it1 -> onSuccess(it1) }
+            }
+        })
     }
 
     override fun onSuccess(data: List<User>) {

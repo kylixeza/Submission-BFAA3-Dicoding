@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kylix.demosubmissionbfaa.data.Resource
 import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
 import com.kylix.demosubmissionbfaa.databinding.ActivityDetailBinding
 import com.kylix.demosubmissionbfaa.model.User
@@ -39,7 +40,13 @@ class DetailActivity : AppCompatActivity(), ViewStateCallback<User?> {
 
         val username = intent.getStringExtra(EXTRA_USER)
 
-        viewModel.getDetailUser(username, this@DetailActivity)
+        viewModel.getDetailUser(username).observe(this, {
+            when (it) {
+                is Resource.Error -> onFailed(it.message)
+                is Resource.Loading -> onLoading()
+                is Resource.Success -> onSuccess(it.data)
+            }
+        })
 
         val pageAdapter = FollowPagerAdapter(this, username.toString())
 

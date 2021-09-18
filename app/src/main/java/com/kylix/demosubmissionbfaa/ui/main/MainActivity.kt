@@ -10,6 +10,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.R
+import com.kylix.demosubmissionbfaa.data.Resource
 import com.kylix.demosubmissionbfaa.databinding.ActivityMainBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
@@ -41,7 +42,13 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     userQuery = query.toString()
                     clearFocus()
-                    viewModel.searchUser(userQuery, this@MainActivity)
+                    viewModel.searchUser(userQuery).observe(this@MainActivity, {
+                        when (it) {
+                            is Resource.Error -> onFailed(it.message)
+                            is Resource.Loading -> onLoading()
+                            is Resource.Success -> it.data?.let { it1 -> onSuccess(it1) }
+                        }
+                    })
                     return true
                 }
 

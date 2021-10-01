@@ -1,3 +1,6 @@
+# Submission Masih Belum Menerapkan Syarat Submission Terbaru Dari Dicoding
+Update Dicoding pada 16 September 2021. Repository ini akan segera diupdate setelah authornya sedikit senggang
+
 # Submission-BFAA3-Dicoding
 Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding 
 

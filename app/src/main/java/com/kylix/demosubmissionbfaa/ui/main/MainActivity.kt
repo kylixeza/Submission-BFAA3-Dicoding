@@ -6,29 +6,28 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.widget.SearchView
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.R
 import com.kylix.demosubmissionbfaa.data.Resource
 import com.kylix.demosubmissionbfaa.databinding.ActivityMainBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
+import com.kylix.demosubmissionbfaa.ui.favorite.FavoriteActivity
 import com.kylix.demosubmissionbfaa.util.ViewStateCallback
 
 class MainActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
 
     private lateinit var mainBinding: ActivityMainBinding
     private lateinit var userQuery: String
-    private lateinit var viewModel: MainViewModel
+    private val viewModel by viewModels<MainViewModel>()
     private lateinit var userAdapter: UserAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainBinding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(mainBinding.root)
-
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
 
         userAdapter = UserAdapter()
         mainBinding.includeMainSearch.rvListUser.apply {
@@ -69,6 +68,11 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
         return when (item.itemId) {
             R.id.menu_language -> {
                 val intent = Intent(Settings.ACTION_LOCALE_SETTINGS)
+                startActivity(intent)
+                true
+            }
+            R.id.menu_favorite -> {
+                val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
                 startActivity(intent)
                 true
             }

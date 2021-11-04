@@ -1,33 +1,50 @@
 package com.kylix.demosubmissionbfaa.model
 
+import androidx.room.ColumnInfo
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 
+@Entity(tableName = "user")
 data class User (
 
     @field:Json(name = "id")
-    val id: Int,
+    @ColumnInfo(name = "id")
+    @PrimaryKey
+    val id: Int? = 0,
 
     @field:Json(name = "login")
-    val username: String,
+    @ColumnInfo(name = "username")
+    val username: String? = "",
 
     @field:Json(name = "name")
-    val name: String,
+    @ColumnInfo(name = "name")
+    val name: String? = "",
 
     @field:Json(name = "location")
-    val location: String,
+    @ColumnInfo(name = "location")
+    val location: String? = "",
 
     @field:Json(name = "company")
-    val company: String,
+    @ColumnInfo(name = "company")
+    val company: String? = "",
 
     @field:Json(name = "public_repos")
-    val repository: Int,
+    @ColumnInfo(name = "repository")
+    val repository: Int? = 0,
 
     @field:Json(name = "followers")
-    val follower: Int,
+    @ColumnInfo(name = "follower")
+    val follower: Int? = 0,
 
     @field:Json(name = "following")
-    val following: Int,
+    @ColumnInfo(name = "following")
+    val following: Int? = 0,
 
     @field:Json(name = "avatar_url")
-    val avatar: String
+    @ColumnInfo(name = "avatar")
+    val avatar: String? = "",
+
+    @ColumnInfo(name = "isFavorite")
+    var isFavorite: Boolean? = false
 )

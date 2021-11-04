@@ -1,34 +1,24 @@
 package com.kylix.demosubmissionbfaa.ui.detail
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.kylix.demosubmissionbfaa.data.Resource
-import com.kylix.demosubmissionbfaa.data.remote.ApiService
-import com.kylix.demosubmissionbfaa.data.remote.RetrofitService
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.kylix.demosubmissionbfaa.data.Repository
 import com.kylix.demosubmissionbfaa.model.User
-import com.kylix.demosubmissionbfaa.util.ViewStateCallback
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import kotlinx.coroutines.launch
 
 
-class DetailViewModel: ViewModel() {
+class DetailViewModel(application: Application): AndroidViewModel(application) {
 
-    private val retrofit = RetrofitService.create()
-    private val user = MutableLiveData<Resource<User>>()
+    val repository = Repository(application)
 
-    fun getDetailUser(username: String?): LiveData<Resource<User>> {
-        retrofit.getDetailUser(username!!).enqueue(object : Callback<User> {
-            override fun onResponse(call: Call<User>, response: Response<User>) {
-                val result = response.body()
-                user.postValue(Resource.Success(result))
-            }
+    suspend fun getDetailUser(username: String) = repository.getDetailUser(username)
 
-            override fun onFailure(call: Call<User>, t: Throwable) {
+    fun insertFavoriteUser(user: User) = viewModelScope.launch {
+        repository.insertFavoriteUser(user)
+    }
 
-            }
-        })
-        return user
+    fun deleteFavoriteUser(user: User) = viewModelScope.launch {
+        repository.deleteFavoriteUser(user)
     }
 }

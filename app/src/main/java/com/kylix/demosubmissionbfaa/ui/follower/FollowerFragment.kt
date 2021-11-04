@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.viewbinding.library.fragment.viewBinding
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kylix.demosubmissionbfaa.R
@@ -31,7 +32,7 @@ class FollowerFragment: Fragment(), ViewStateCallback<List<User>> {
     }
 
     private val followerBinding: FollowerFragmentBinding by viewBinding()
-    private lateinit var viewModel: FollowerViewModel
+    private val viewModel: FollowerViewModel by viewModels()
     private lateinit var userAdapter: UserAdapter
     private var username: String? = null
 
@@ -51,8 +52,6 @@ class FollowerFragment: Fragment(), ViewStateCallback<List<User>> {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        viewModel = ViewModelProvider(this).get(FollowerViewModel::class.java)
 
         userAdapter = UserAdapter()
         followerBinding.rvListUserFollower.apply {

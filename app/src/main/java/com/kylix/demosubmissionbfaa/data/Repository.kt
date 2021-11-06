@@ -3,6 +3,7 @@ package com.kylix.demosubmissionbfaa.data
 import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.kylix.demosubmissionbfaa.data.datastore.UserDataStore
 import com.kylix.demosubmissionbfaa.data.local.UserDao
 import com.kylix.demosubmissionbfaa.data.local.UserDatabase
 import com.kylix.demosubmissionbfaa.data.remote.ApiService
@@ -17,11 +18,13 @@ class Repository(private val application: Application) {
 
     private val retrofit: ApiService
     private val dao: UserDao
+    private val dataStore: UserDataStore
 
     init {
         retrofit = RetrofitService.create()
         val database: UserDatabase = UserDatabase.getInstance(application)
         dao = database.userDao()
+        dataStore = UserDataStore.getInstance(application)
     }
 
     fun searchUser(query: String): LiveData<Resource<List<User>>> {
@@ -132,4 +135,7 @@ class Repository(private val application: Application) {
 
     suspend fun deleteFavoriteUser(user: User) = dao.deleteFavoriteUser(user)
 
+    suspend fun saveThemeSetting(isDarkModeActive: Boolean) = dataStore.saveThemeSetting(isDarkModeActive)
+
+    fun getThemeSetting() = dataStore.getThemeSetting()
 }

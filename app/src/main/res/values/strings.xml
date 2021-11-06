@@ -15,5 +15,7 @@
     <string name="followers_not_found" translatable="true">%s Has No Followers</string>
     <string name="following_not_found" translatable="true">%s Does Not Follow Anyone</string>
     <string name="languages" translatable="true">Languages</string>
-    <string name="favorite">Favorite</string>
+    <string name="favorite" translatable="true">Favorite</string>
+    <string name="settings" translatable="true">Settings</string>
+    <string name="dark_mode" translatable="true">Dark Mode</string>
 </resources>

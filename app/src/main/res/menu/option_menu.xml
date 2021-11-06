@@ -14,4 +14,10 @@
         android:icon="@drawable/ic_favorite_black"
         app:showAsAction="ifRoom"/>
 
+    <item
+        android:id="@+id/menu_settings"
+        android:title="@string/settings"
+        android:icon="@drawable/ic_setting"
+        app:showAsAction="ifRoom"/>
+
 </menu>

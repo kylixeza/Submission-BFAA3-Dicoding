@@ -4,7 +4,7 @@ import androidx.annotation.StringRes
 import com.kylix.demosubmissionbfaa.R
 
 object Constanta {
-    const val TIME_SPLASH = 1500L
+    const val TIME_SPLASH = 2000L
 
     const val EXTRA_USER = "EXTRA_USER"
 

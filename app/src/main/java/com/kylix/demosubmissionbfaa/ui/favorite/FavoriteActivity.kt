@@ -63,4 +63,17 @@ class FavoriteActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
             }
         }
     }
+
+    override fun onResume() {
+        super.onResume()
+        CoroutineScope(Dispatchers.Main).launch {
+            viewModel.getFavoriteList().observe(this@FavoriteActivity, {
+                when(it) {
+                    is Resource.Error -> onFailed(it.message)
+                    is Resource.Loading -> onLoading()
+                    is Resource.Success -> it.data?.let { it1 -> onSuccess(it1) }
+                }
+            })
+        }
+    }
 }

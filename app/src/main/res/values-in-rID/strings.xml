@@ -14,4 +14,7 @@
     <string name="followers_not_found" translatable="true">%s Tidak Memiliki Pengikut</string>
     <string name="following_not_found" translatable="true">%s Tidak Mengikuti Siapapun</string>
     <string name="languages" translatable="true">Bahasa</string>
+    <string name="favorite" translatable="true">Favorit</string>
+    <string name="settings" translatable="true">Pengaturan</string>
+    <string name="dark_mode" translatable="true">Mode Gelap</string>
 </resources>

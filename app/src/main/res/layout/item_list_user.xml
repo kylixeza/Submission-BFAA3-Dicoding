@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             tools:text="Username"
-            android:textColor="@android:color/black"
+            android:textColor="?android:textColorPrimary"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/iv_imgUser"
             app:layout_constraintTop_toTopOf="@+id/iv_imgUser"

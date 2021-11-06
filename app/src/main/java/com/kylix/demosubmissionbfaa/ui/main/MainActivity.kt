@@ -15,6 +15,7 @@ import com.kylix.demosubmissionbfaa.databinding.ActivityMainBinding
 import com.kylix.demosubmissionbfaa.model.User
 import com.kylix.demosubmissionbfaa.ui.adapter.UserAdapter
 import com.kylix.demosubmissionbfaa.ui.favorite.FavoriteActivity
+import com.kylix.demosubmissionbfaa.ui.setting.SettingsActivity
 import com.kylix.demosubmissionbfaa.util.ViewStateCallback
 
 class MainActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
@@ -73,6 +74,11 @@ class MainActivity : AppCompatActivity(), ViewStateCallback<List<User>> {
             }
             R.id.menu_favorite -> {
                 val intent = Intent(this@MainActivity, FavoriteActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.menu_settings -> {
+                val intent = Intent(this@MainActivity, SettingsActivity::class.java)
                 startActivity(intent)
                 true
             }

@@ -15,6 +15,3 @@ Submission BFAA(Belajar Fundamental Aplikasi Android) ke 3(final) Dicoding
 
 <p>Help me to finish my college :)</p>
 https://saweria.co/kylixeza
-
-## Note
-This code might be different from Submission 2 because it's a project from other repository (Demo Submission BFAA) but it has fullfilled requirement for latest version of BFAA's submission
